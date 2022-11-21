@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.7.0</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>com.example</groupId>
+    <artifactId>se</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>se</name>
+    <description>se</description>
+    <properties>
+        <java.version>11</java.version>
+        <repackage.classifier/>
+        <spring-native.version>0.12.0</spring-native.version>
+    </properties>
+    <!--    &lt;!&ndash; 配置方言 &ndash;&gt;-->
+    <!--    <bean name="databaseIdProvider" class="org.apache.ibatis.mapping.VendorDatabaseIdProvider" >-->
+    <!--        <property name="properties">-->
+    <!--            <map>-->
+    <!--                <entry key="MySQL" value="mysql"></entry>-->
+    <!--                <entry key="ORACLE" value="oracle"></entry>-->
+    <!--                <entry key="Zenith" value="gaussdb"></entry>&lt;!&ndash; 高斯数据库 &ndash;&gt;-->
+    <!--            </map>-->
+    <!--        </property>-->
+    <!--    </bean>-->
+
+
+    <!--    <bean id="sessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">-->
+    <!--        <property name="databaseIdProvider" ref="databaseIdProvider" /> &lt;!&ndash; 配置方言 &ndash;&gt;-->
+    <!--        &lt;!&ndash; 其他配置 请参见项目代码 &ndash;&gt;-->
+    <!--    </bean>-->
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <scope>runtime</scope>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>3.4.1</version>
+        </dependency>
+
+
+        <!--        <dependency>-->
+        <!--            <groupId>org.postgresql</groupId>-->
+        <!--            <artifactId>postgresql</artifactId>-->
+        <!--            <scope>runtime</scope>-->
+        <!--        </dependency>-->
+
+<!--        <dependency>-->
+<!--            <groupId>com.baomidou</groupId>-->
+<!--            <artifactId>mybatis-plus-generator</artifactId>-->
+<!--            <version>3.4.1</version>-->
+<!--        </dependency>-->
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.8.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.29</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.apache.velocity</groupId>
+            <artifactId>velocity-engine-core</artifactId>
+            <version>2.0</version>
+        </dependency>
+
+
+        <!--        <dependency>-->
+        <!--            <groupId>io.springfox</groupId>-->
+        <!--            <artifactId>springfox-boot-starter-->
+        <!--            </artifactId> <version>3.0.0</version>-->
+        <!--        </dependency>-->
+
+
+
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${project.parent.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.2.0</version>
+            </plugin>
+        </plugins>
+
+        <!--        <resources>-->
+        <!--            <resource>-->
+        <!--                <directory>src/main/java</directory>-->
+        <!--                <includes>-->
+        <!--                    <include>**/*.properties</include>-->
+        <!--                    <include>**/*.xml</include>-->
+        <!--                    <include>**/*.conf</include>-->
+        <!--                </includes>-->
+        <!--                <filtering>false</filtering>-->
+        <!--            </resource>-->
+        <!--            <resource>-->
+        <!--                <directory>src/main/resources</directory>-->
+        <!--                <includes>-->
+        <!--                    <include>**/*.properties</include>-->
+        <!--                    <include>**/*.xml</include>-->
+        <!--                    <include>**/*.conf</include>-->
+        <!--                </includes>-->
+        <!--                <filtering>false</filtering>-->
+        <!--            </resource>-->
+        <!--        </resources>-->
+    </build>
+
+
+
+
+</project>

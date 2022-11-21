@@ -1,0 +1,49 @@
+CREATE TABLE Teacher (
+    id int(20) NOT NULL,
+    name varchar(20),
+    password varchar(20) NOT NULL,
+    college varchar(10), 
+    telephone int(20),
+    PRIMARY KEY (id)
+   );
+CREATE TABLE Student (
+    id int(20) NOT NULL,
+    name varchar(20),
+    password varchar(20) NOT NULL,
+    college varchar(10), 
+    telephone int(20),
+    PRIMARY KEY (id)
+   );
+CREATE TABLE Evaluation(
+    id int(20) NOT NULL auto_increment,
+	learnid int(20),
+    homework int(5),
+    content int(5),
+    teaching int(5),
+    comment varchar(100),
+	PRIMARY KEY (id),
+	FOREIGN KEY (learnid) REFERENCES Learn(id)
+);
+CREATE TABLE Lesson(
+    id int(20) NOT NULL,
+    teacherid int(20),
+    name varchar(20),
+    credit int(5),
+    hours int(5),
+    PRIMARY KEY (id),
+    FOREIGN KEY (teacherid) REFERENCES Teacher(id)
+);
+CREATE TABLE Learn(
+    id int(20) NOT NULL auto_increment,
+    stuid int(20),
+    lesid int(20),
+    score int(5),
+    PRIMARY KEY(id),
+    FOREIGN KEY (stuid) REFERENCES Student(id),
+    FOREIGN KEY (lesid) REFERENCES Lesson(id)
+);
+CREATE TABLE Administrator(
+    id int(20) NOT NULL,
+    password varchar(20),
+    PRIMARY KEY(id)
+);
