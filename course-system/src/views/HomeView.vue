@@ -12,7 +12,7 @@
                 <span v-if="getLogined()===0">Log in / 登录</span>
                 <span v-if="getLogined()===1">已登录</span>
               </el-button></el-col>
-            <el-col :span="10" style="margin-left: -100px; margin-top: 8px;"><div class="grid-content ep-bg-purple" />联系我们：武汉大学计算机学院</el-col>
+            <el-col :span="10" style="margin-left: -100px; margin-top: 8px;"><div class="grid-content ep-bg-purple" />联系我们：西安交通大学软件学院</el-col>
           </el-row>
         </nav>
       </el-col>

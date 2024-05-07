@@ -18,6 +18,7 @@
 <!--          若用户未登录，logined==0-->
         <router-link to="/login" v-if="getLogined()===0" style="text-decoration: none; margin-left: 250px; background-color: #F56C6C; padding: 13px; border-radius: 20px;">
           Log in / 登录</router-link></el-col>
+
         <el-col :span="3" v-if="getLogined()===1" style="margin-left: -250px; margin-top: 35px;">欢迎,{{this.username}}</el-col>
         <img @click="exit" v-if="getLogined()===1" src="./assets/exit.png" alt style="width: 20px; height: 20px; margin-top: 35px;" />
       </el-row>
@@ -90,7 +91,7 @@ export default {
   data() {
     return {
       logined: 0,
-      ip: 'http://10.131.191.118:8080'
+      ip: 'http://10.180.46.34:8080'
     }
   },
   components: {},

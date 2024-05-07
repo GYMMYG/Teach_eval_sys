@@ -61,6 +61,42 @@ public class TeacherController {
                 return 3;}
         }
     }
+    // 修改密码
+    @RequestMapping("/change-password/{int_userid}/{str_oldPassword}/{str_newPassword}")
+    public Integer changeTeacherPassword(@PathVariable Integer int_userid,
+                                         @PathVariable String str_oldPassword,
+                                         @PathVariable String str_newPassword) {
+        // 创建查询Wrapper，验证旧密码是否正确
+        QueryWrapper<Teacher> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("id", int_userid).eq("password", str_oldPassword);
+        List<Teacher> users = TeacherMapper.selectList(queryWrapper);
+
+        if (users.size() == 1) {
+            // 旧密码验证通过，更新新密码
+            Teacher teacher = users.get(0);
+            teacher.setPassword(str_newPassword); // 假设你有setter方法设置密码
+            int updateCount = TeacherMapper.updateById(teacher);
+            if (updateCount == 1) {
+                System.out.println("密码更新成功");
+                return 1; // 密码更新成功
+            } else {
+                System.out.println("密码更新失败");
+                return 4; // 密码更新失败
+            }
+        } else {
+            // 验证旧密码是否正确
+            QueryWrapper<Teacher> alogin = new QueryWrapper<>();
+            alogin.eq("id", int_userid);
+            List<Teacher> user = TeacherMapper.selectList(alogin);
+            if (user.size() == 1) {
+                System.out.println("旧密码错误");
+                return 2; // 旧密码错误
+            } else {
+                System.out.println("不存在该用户");
+                return 3; // 不存在该用户
+            }
+        }
+    }
 
     //新增教师，同时判断是否教师id是否重复
     //0：新增失败  1:正常新增  2:该教师id已存在 3：属性不全

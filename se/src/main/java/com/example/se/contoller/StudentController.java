@@ -100,6 +100,42 @@ public class StudentController {
         }
     }
 
+    // 修改密码
+    @RequestMapping("/change-password/{int_userid}/{str_oldPassword}/{str_newPassword}")
+    public Integer changePassword(@PathVariable Integer int_userid, @PathVariable String str_oldPassword, @PathVariable String str_newPassword) {
+        // 创建查询Wrapper，验证旧密码是否正确
+        QueryWrapper<Student> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("id", int_userid).eq("password", str_oldPassword);
+        List<Student> users = StudentMapper.selectList(queryWrapper);
+
+        if (users.size() == 1) {
+            // 旧密码验证通过，更新新密码
+            Student student = users.get(0);
+            student.setPassword(str_newPassword); // 假设你有setter方法设置密码
+            int updateCount = StudentMapper.updateById(student);
+            if (updateCount == 1) {
+                System.out.println("密码更新成功");
+                return 1; // 密码更新成功
+            } else {
+                System.out.println("密码更新失败");
+                return 4; // 密码更新失败
+            }
+        } else {
+            // 验证旧密码是否正确
+            QueryWrapper<Student> alogin = new QueryWrapper<>();
+            alogin.eq("id", int_userid);
+            List<Student> user = StudentMapper.selectList(alogin);
+            if (user.size() == 1) {
+                System.out.println("旧密码错误");
+                return 2; // 旧密码错误
+            } else {
+                System.out.println("不存在该用户");
+                return 3; // 不存在该用户
+            }
+        }
+    }
+
+
     //name模糊查询查询学生
     @RequestMapping("/query/name/{str_name}")
     public List<Student> getStudentList(@PathVariable String str_name) {

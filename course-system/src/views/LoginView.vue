@@ -25,6 +25,7 @@
     <el-row type="flex" class="row-bg1 row-gap" justify="center" style="margin-top: 30px">
       <el-col :span="6"><div class="grid-content">
         <el-button type="primary" v-model="operation" plain @click="postUserRegister">完成</el-button>
+        <el-button type="primary" @click="gotoChangePassword">修改密码</el-button>
 <!--        <el-button type="primary" v-model="operation" plain @click="getIP">完成</el-button>-->
       </div></el-col>
     </el-row>
@@ -160,7 +161,7 @@ export default {
         })
       }
       if (this.type === '2') {
-        axios.get('http://10.131.191.118:8080/teacher/login/' + this.userid + '/' + this.passwd).then(response => {
+        axios.get(this.getIP() + '/teacher/login/' + this.userid + '/' + this.passwd).then(response => {
           window.console.log(response.data)
           const a = response.data
           if (a === 1) {
@@ -170,7 +171,7 @@ export default {
               type: 'success'
             })
             // let username=根据userid找到的userid
-            axios.get('http://10.131.191.118:8080/teacher/idname/' + this.userid).then(response => {
+            axios.get(this.getIP() + '/teacher/idname/' + this.userid).then(response => {
               window.console.log(response.data)
               this.username = response.data
               this.$store.commit('setUserName', this.username)
@@ -202,7 +203,7 @@ export default {
         })
       }
       if (this.type === '3') {
-        axios.get('http://10.131.191.118:8080/administrator/login/' + this.userid + '/' + this.passwd).then(response => {
+        axios.get(this.getIP() + '/administrator/login/' + this.userid + '/' + this.passwd).then(response => {
           window.console.log(response.data)
           const a = response.data
           if (a === 1) {
@@ -236,6 +237,10 @@ export default {
           window.console.log(error)
         })
       }
+    },
+    gotoChangePassword() {
+      // 使用Vue Router进行页面跳转
+      this.$router.push('/change-password')
     }
   }
 }

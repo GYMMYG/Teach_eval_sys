@@ -114,7 +114,7 @@ export default {
       window.console.log(lesid)
       window.console.log(stuid)
       // 通过stuid和lesid取learnid
-      // axios.get('http://192.168.144.195:8080/learn/query/stu_lesid/' + stuid + '/' + lesid).then(response => {
+      // axios.get(this.getIP() + '/learn/query/stu_lesid/' + stuid + '/' + lesid).then(response => {
       axios.get(this.getIP() + '/learn/query/stu_lesid/' + stuid + '/' + lesid).then(response => {
         window.console.log(response.data)
         a = response.data
@@ -129,7 +129,7 @@ export default {
 
         }
         window.console.log(eva)
-        axios.post('http://10.131.191.118:8080/evaluation/add', eva).then(response => {
+        axios.post(this.getIP() + '/evaluation/add', eva).then(response => {
           window.console.log(response.data)
           const a = response.data
           if (a === 1) {
